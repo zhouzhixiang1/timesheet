@@ -1,0 +1,53 @@
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	
+	<http auto-config="true" use-expressions="true">
+  		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>	
+  		<intercept-url pattern="/user/**" access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')"/>	
+  		
+  		<form-login
+  			default-target-url="/user/list"
+  			login-page="/login"
+  			authentication-failure-url="/preLogin"
+  			login-processing-url="/loginS"
+  			password-parameter="password"
+  			username-parameter="username"/>		
+  		
+	<logout logout-success-url="/logout"/>
+   </http>
+   
+   
+   
+  <authentication-manager>
+   		<authentication-provider>
+   		
+   		<password-encoder ref="encoder"></password-encoder>
+   		
+   		<jdbc-user-service data-source-ref="dataSource" users-by-username-query="select * from users where username=?"/>
+   		</authentication-provider>
+   </authentication-manager>
+   
+   <!-- crittografia password -->
+   <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+   		<beans:constructor-arg name="strength" value="9"></beans:constructor-arg>
+   </beans:bean>
+
+   <context:property-placeholder
+		location="classpath:db.properties" />
+
+	<beans:bean id="dataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<beans:property name="user" value="${jdbc.user}"></beans:property>
+		<beans:property name="password" value="${jdbc.password}"></beans:property>
+		<beans:property name="driverClass" value="${jdbc.driverClass}"></beans:property>
+		<beans:property name="jdbcUrl" value="${jdbc.jdbcUrl}"></beans:property>
+	</beans:bean>
+   
+   
+</beans:beans>

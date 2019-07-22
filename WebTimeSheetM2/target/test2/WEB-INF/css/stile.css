@@ -1,0 +1,43 @@
+.navbar {
+  min-height: 100px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;	
+}
+
+.sfondo {
+  background-image: url("");
+  height: 100%;
+  background-position: fixed;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.button {
+  background-color: #729aff; 
+  border: 2px solid #729aff; 
+  color: white;
+  font-weight: bold;
+ -moz-border-radius: 20px;
+ -webkit-border-radius: 20px;
+ border-radius:20px;
+}
+
+.scelta {
+	
+  width: relative;
+  height: 50%;
+  
+}
+
+.linkStyle {
+  text-decoration: none;
+  color: #729aff;
+}
+
+
+
+
+
