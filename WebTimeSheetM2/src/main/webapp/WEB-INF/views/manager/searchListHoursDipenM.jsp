@@ -27,7 +27,7 @@
 		
 		<tr>
 			<th scope="col">Username</th>
-			<th scope="col">Id_ticket</th>
+			<th scope="col">Commessa</th>
 			<th scope="col">Ore_lavorate</th>
 			<th scope="col">Data</th>
 			<th scope="col">Descrizione</th>
@@ -43,7 +43,7 @@
 				<th scope="row">${p.descrizione}</th>
 			</tr>
 		</c:forEach>
-		
+	<tr><td>totale ore lavorate : ${totalHours}</td></tr>
 	</table>
 	</form>
 	</c:if>

@@ -10,6 +10,13 @@
 p {
 	color: red;
 }
+h1{
+color:white;
+}
+label{
+color:white;}
+body{background-image: url("images/code.jpg");
+		background-size: cover;}
 </style>
 </head>
 <body>

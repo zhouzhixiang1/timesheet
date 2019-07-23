@@ -43,7 +43,7 @@
 				<th scope="row">${p.descrizione}</th>
 			</tr>
 		</c:forEach>
-		
+		<tr><td>totale ore lavorate : ${totalHours}</td></tr>
 	</table>
 	</form>
 	</c:if>

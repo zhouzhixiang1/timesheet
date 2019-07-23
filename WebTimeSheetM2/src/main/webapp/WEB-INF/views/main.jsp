@@ -8,19 +8,39 @@
 <meta charset="ISO-8859-1">
 <title>TimeSheet</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+body{background-image: url("../images/manager2.jpg");
+		background-size: cover;}
+		h2 {
+    margin-left: 100px;
+}
+h5 {
+    margin-left: 250px;
+    color: cornsilk;
+}
+a {
+    margin-left: 100px;
+}
+</style>
 </head>
 <body>
-<h1>Welcome,  <a href="${pageContext.request.contextPath}/logout">logout</a></h1>
- 
-<sec:authorize access="hasRole('ROLE_ADMIN')">
-<td><a href ="${pageContext.request.contextPath}/admin/listDTM"><button type="button">visualizzaM</button></a></td>
-<td><a href ="${pageContext.request.contextPath}/admin/listT"><button type="button">lista ticket</button></a></td>
+ <sec:authentication property="principal.username" scope="session" var="username"></sec:authentication> 
+<h2>Welcome,${username}</h2>
+<a href="${pageContext.request.contextPath}/logout">logout</a>
 <br>
-<br>
-</sec:authorize>
+
 <sec:authorize access="hasRole('ROLE_USER')"><td>
-<a href ="${pageContext.request.contextPath}/user/listDT"><button type="button">visualizzaD</button></a></td>
+<h5>Access Employee</h5>
+<a href ="${pageContext.request.contextPath}/user/listDT"><button type="button" class="btn btn-lg btn-danger">MY TIMESHEET</button></a></td>
+<br>
+<br>
 </sec:authorize>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+<h5>Access Manager</h5>
+<td><a href ="${pageContext.request.contextPath}/admin/listDTM"><button type="button"class="btn btn-lg btn-success">ALL TIMESHEET</button></a></td>
+<td><a href ="${pageContext.request.contextPath}/admin/listT"><button type="button"class="btn btn-lg btn-warning">LIST TICKET</button></a></td>
+ </sec:authorize>
+
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

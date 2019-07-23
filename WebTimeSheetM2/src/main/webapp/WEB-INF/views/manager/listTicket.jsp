@@ -18,10 +18,13 @@
 		<tr>
 		<td colspan="8"><h2>Tabella ticket</h2></td>
 		<td><a href="${pageContext.request.contextPath}/admin/addTicket">
-						<button class="button" type="button">add Ticket</button>
+						<button class="button1" type="button">add Ticket</button>
 				</a></td>
 		</tr>
 		<tr>
+			<th scope="col">Id ticket</th>
+			<th scope="col">cliente</th>
+			<th scope="col">sorgente ticket</th>
 			<th scope="col">commessa</th>
 			<th scope="col">descrizione</th>
 			<th scope="col"></th>
@@ -29,6 +32,9 @@
 		</thead>
 		<c:forEach items="${page.content}" var="p">
 			<tr>
+				<th scope="row">${p.idTicket}</th>
+				<th scope="row">${p.cliente}</th>
+				<th scope="row">${p.sorgenteTicket}</th>
 				<th scope="row">${p.commessa}</th>
 				<th scope="row">${p.descrizione}</th>
 				<th scope="row"><a href="${pageContext.request.contextPath}/admin/detailsT/${p.idTicket}">

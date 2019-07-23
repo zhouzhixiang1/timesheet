@@ -18,7 +18,7 @@
 		<tr>
 		<td><h2>Tabella TimeSheet</h2></td>
 		<td><a href="${pageContext.request.contextPath}/user/addDT">
-						<button class="button" type="button">add TimeSheet</button>
+						<button class="button" type="button">aggiungi ore</button>
 				</a></td>
 		</tr>
 		<tr>
@@ -47,7 +47,6 @@
 				</a></th>
 			</tr>
 		</c:forEach>
-		<tr><td>totale ore lavorate : ${totalHours}</td></tr>
 			<tr>
 				<td colspan="8">
 					total elements&nbsp;${page.totalElements }&nbsp;&nbsp;

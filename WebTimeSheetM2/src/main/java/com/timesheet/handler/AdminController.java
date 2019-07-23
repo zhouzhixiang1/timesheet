@@ -77,6 +77,11 @@ public class AdminController {
 		        Sort sort = new Sort(Sort.Direction.DESC,"data");
 				//Pageable pageable = new PageRequest(pageNo, 5, sort);
 				List<DipendenteTicket> page = this.dipendenteTicketRepository.findAll(Specifications.where(spec2).and(spec1),sort);
+				int totalHours = 0;
+				for(DipendenteTicket dipendenteTicket : page) {
+					totalHours += dipendenteTicket.getOreLavorate();
+				}
+				map.put("totalHours", totalHours);
 				map.put("page", page);
 				return "manager/searchListHoursDipenM";
 			}
